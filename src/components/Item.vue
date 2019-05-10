@@ -8,7 +8,12 @@
     <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <div class="row">
-          <my-component v-for="list in data.lists" :item="list" :key="list.name"/>
+          <my-component
+              v-for="list in data.lists"
+              :item="list"
+              :key="list.name"
+              :target="data.title == '本地站点' ? '_blank' : '_self'"
+          />
         </div>
       </div>
     </div>
