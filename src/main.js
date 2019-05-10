@@ -6,7 +6,6 @@ import Config from './config'
 import VueResource from 'vue-resource'
 import store from './store'
 
-import $ from 'jquery'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
 

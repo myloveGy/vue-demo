@@ -4,11 +4,11 @@
         <h1 v-html="title"></h1>
     </div>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <item v-for="(list, key) in lists" :data="list" :key="key"></item>
+        <item v-for="(list, key) in lists" :data="list" :key="key"/>
     </div>
 </div>
 </template>
-    
+
 <script>
     import Item from './Item'
     export default {
