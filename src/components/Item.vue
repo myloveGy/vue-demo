@@ -1,5 +1,5 @@
 <template>
-  <div class="panel panel-default">
+  <div class="panel panel-default" v-if="data.title && data.lists && data.lists.length > 0">
     <div class="panel-heading" role="tab">
       <h4 class="panel-title">
         <span class="collapsed"> {{ data.title }} </span>
