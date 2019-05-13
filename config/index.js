@@ -7,8 +7,8 @@ const path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../../../resource/index.html'),
-    assetsRoot: path.resolve(__dirname, '../../../resource'),
+    index: path.resolve(__dirname, '../../../resource/public/index.html'),
+    assetsRoot: path.resolve(__dirname, '../../../resource/public'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: true,
@@ -33,7 +33,7 @@ module.exports = {
 
     // 设置代理
     proxyTable: {
-      '/api/vue/': {
+      '/api/': {
         target: 'http://localhost/',  // 接口域名
         changeOrigin: true,  //是否跨域
       },

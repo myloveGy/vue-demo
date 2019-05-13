@@ -10,9 +10,9 @@
 </template>
 
 <script>
-  import Item from './Item'
-  import {Process} from '../utils/process'
-  import {getIndexApi} from '../services'
+  import Item from '@/components/Item'
+  import {Process} from '../../utils/process'
+  import {getIndexApi} from '../../services'
 
   export default {
     name: 'index',

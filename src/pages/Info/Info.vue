@@ -8,9 +8,9 @@
 </template>
 
 <script type="text/javascript">
-  import {Process} from '../utils/process'
-  import {getInfoApi} from '../services'
-  import {get} from '../utils/helper'
+  import {Process} from '../../utils/process'
+  import {getInfoApi} from '../../services'
+  import {get} from '../../utils/helper'
 
   export default {
     name: 'Info',
