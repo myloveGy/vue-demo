@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import router from './router'
 import Config from './config'
-import VueResource from 'vue-resource'
 import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -11,7 +10,6 @@ import 'bootstrap/dist/js/bootstrap.min'
 
 Vue.config.productionTip = false
 Vue.prototype.Config = Config
-Vue.use(VueResource)
 
 /* eslint-disable no-new */
 new Vue({
