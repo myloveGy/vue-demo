@@ -33,7 +33,7 @@ module.exports = {
 
     // 设置代理
     proxyTable: {
-      '/vue-api.php': {
+      '/api/vue/': {
         target: 'http://localhost/',  // 接口域名
         changeOrigin: true,  //是否跨域
       },

@@ -11,6 +11,8 @@
 
 <script>
   import Item from './Item'
+  import {Process} from '../utils/process'
+  import {getIndexApi} from '../services'
 
   export default {
     name: 'index',
@@ -25,14 +27,10 @@
     computed: {
       lists() {
         if (this.$store.state.lists.length === 0) {
-          this.$http.get(this.Config.serverHost, {
-            params: {
-              action: 'index',
-            },
-          }).then(function (response) {
-            if (response.body.code === 0) {
-              this.$store.commit('setLists', response.body.data)
-            }
+          const me = this
+          Process(function* () {
+            const data = yield getIndexApi()
+            me.$store.commit('setLists', data)
           })
         }
 

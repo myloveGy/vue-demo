@@ -8,6 +8,10 @@
 </template>
 
 <script type="text/javascript">
+  import {Process} from '../utils/process'
+  import {getInfoApi} from '../services'
+  import {get} from '../utils/helper'
+
   export default {
     name: 'Info',
     data() {
@@ -18,14 +22,16 @@
     computed: {
       html() {
         if (this.$store.state.phpInfo === '') {
-          this.$http.get(this.Config.serverHost, {
-            params: {
-              action: 'info',
-            },
-          }).then(
-            function (response) {
-              this.$store.commit('setPhpInfo', response.body)
-            })
+          const me = this
+          Process(function* () {
+            yield getInfoApi()
+          }, false, function* (e) {
+            if (get(e, 'status') == 200 && get(e, 'statusText') == 'OK') {
+              me.$store.commit('setPhpInfo', get(e, 'data'))
+            } else {
+              console.info('error', e)
+            }
+          })
         }
 
         return this.$store.state.phpInfo

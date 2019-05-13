@@ -1,10 +1,12 @@
 import axios from 'axios'
+import {get} from './helper'
 
 export const request = (option) => {
   return new Promise((resolve, reject) => {
     axios(option).then(v => {
-      if (v.status == 'success' && v.code === 200) {
-        resolve(v.data.data)
+      const response = get(v, 'data')
+      if (get(response, 'status') == 'success' && get(response, 'code') === 200) {
+        resolve(get(response, 'data'))
       } else {
         reject(v)
       }
