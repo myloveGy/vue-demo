@@ -7,6 +7,8 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
+import {Process} from './utils/process'
+import {getPhpApi} from './services'
 
 Vue.config.productionTip = false
 Vue.prototype.Config = Config
@@ -30,15 +32,10 @@ new Vue({
   computed: {
     php() {
       if (this.$store.state.php.version === '') {
-        this.$http.get(this.Config.serverHost, {
-          params: {
-            action: 'php',
-          },
-        }).then(function (response) {
-          let json = response.body
-          if (json.code === 0) {
-            this.$store.commit('setPhp', json.data)
-          }
+        const me = this
+        Process(function* () {
+          const data = yield getPhpApi()
+          me.$store.commit('setPhp', data)
         })
       }
 

@@ -21,7 +21,7 @@ export const request = (option) => {
  * @param {object} options
  * @returns {Promise<any>}
  */
-export const getApi = (url, data, options = {}) => {
+export const getApi = (url, data = {}, options = {}) => {
   const params = {
     url,
     data,
@@ -39,7 +39,7 @@ export const getApi = (url, data, options = {}) => {
  * @param {object} options
  * @returns {Promise<any>}
  */
-export const postApi = (url, data, options = {}) => {
+export const postApi = (url, data = {}, options = {}) => {
   const params = {
     url,
     data,
