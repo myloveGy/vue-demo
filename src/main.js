@@ -7,11 +7,11 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
-import {Process} from './utils/process'
-import {getPhpApi} from './services'
 
 Vue.config.productionTip = false
 Vue.prototype.Config = Config
+
+import {mapActions, mapState} from 'vuex'
 
 /* eslint-disable no-new */
 new Vue({
@@ -25,21 +25,15 @@ new Vue({
     }
   },
   methods: {
+    ...mapActions(['getPhpAction']),
     goHome() {
       this.$router.push({path: '/'})
     },
   },
+  created() {
+    this.getPhpAction()
+  },
   computed: {
-    php() {
-      if (this.$store.state.php.version === '') {
-        const me = this
-        Process(function* () {
-          const data = yield getPhpApi()
-          me.$store.commit('setPhp', data)
-        })
-      }
-
-      return this.$store.state.php
-    },
+    ...mapState(['php']),
   },
 })

@@ -1,7 +1,7 @@
 import objectPath from 'object-path'
 
-export const get = (array, key, defaultValue) => {
-  return objectPath.get(array, key, defaultValue)
+export const get = (...args) => {
+  return objectPath.get(...args)
 }
 
 export const objectToArray = (objectValue, label = 'label', value = 'value') => {

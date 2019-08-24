@@ -4,15 +4,14 @@
       <h1 v-html="title"></h1>
     </div>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <item v-for="(list, key) in lists" :data="list" :key="key"/>
+      <item v-for="(item, key) in list" :data="item" :key="key"/>
     </div>
   </div>
 </template>
 
 <script>
   import Item from '@/components/Item'
-  import {Process} from '../../utils/process'
-  import {getIndexApi} from '../../services'
+  import {mapActions, mapState} from 'vuex'
 
   export default {
     name: 'index',
@@ -24,18 +23,16 @@
     components: {
       Item,
     },
+    methods: {
+      ...mapActions(['getListAction']),
+    },
+    created() {
+      this.getListAction()
+    },
     computed: {
-      lists() {
-        if (this.$store.state.lists.length === 0) {
-          const me = this
-          Process(function* () {
-            const data = yield getIndexApi()
-            me.$store.commit('setLists', data)
-          })
-        }
-
-        return this.$store.state.lists
-      },
+      ...mapState({
+        list: state => state.list.data,
+      }),
     },
   }
 </script>

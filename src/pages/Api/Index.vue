@@ -113,9 +113,8 @@
 
 <script>
   import Select from '@/components/Select'
-  import {Process} from '../../utils/process'
-  import {objectToArray, get, copyText} from '../../utils/helper'
-  import {apiIndexApi, apiCreateApi} from '../../services'
+  import {Process, objectToArray, copyText} from '@/utils'
+  import {apiIndexApi, apiCreateApi} from '@/services'
 
   export default {
     name: 'Index',
@@ -149,11 +148,9 @@
       },
 
       handleSubmit() {
-        const me = this
         const params = $('#form').serialize()
-        Process(function* () {
-          const html = yield apiCreateApi(params)
-          me.html = html
+        Process(async () => {
+          this.html = await apiCreateApi(params)
           $('#myModal').modal({backdrop: 'static'})
         })
       },
@@ -161,10 +158,10 @@
 
     created() {
       const me = this
-      Process(function* () {
-        const data = yield apiIndexApi()
-        me.type_list = objectToArray(get(data, 'type_list', {}))
-        me.method_list = objectToArray(get(data, 'method_list', {}))
+      Process(async () => {
+        const {type_list = {}, method_list = {}} = await apiIndexApi()
+        me.type_list = objectToArray(type_list)
+        me.method_list = objectToArray(method_list)
       })
     },
   }
