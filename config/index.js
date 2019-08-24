@@ -4,11 +4,13 @@
 
 const path = require('path')
 
+const dirName = '../../../localhost/public'
+
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../../../resource/public/index.html'),
-    assetsRoot: path.resolve(__dirname, '../../../resource/public'),
+    index: path.resolve(__dirname, dirName + '/index.html'),
+    assetsRoot: path.resolve(__dirname, dirName),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: true,

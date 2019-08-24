@@ -5,7 +5,6 @@ import {getIndexApi, getInfoApi, getPhpApi} from '@/services'
 
 Vue.use(Vuex)
 
-
 export default new Vuex.Store({
   state: {
     php: {
@@ -71,35 +70,18 @@ export default new Vuex.Store({
   },
 
   // 同步赋值
-  mutations:
-    {
-      setPhp(state, object) {
-        state.php = object
-      }
-      ,
-      setPhpInfo(state, info) {
-        state.phpInfo = info
-      }
-      ,
-      setList(state, data) {
-        state.list = {
-          ...state.list,
-          ...data,
-        }
-      }
-      ,
-    }
-  ,
-
-// 计算属性
-  getters: {
-    php: (state) => {
-      return state.php
+  mutations: {
+    setPhp(state, object) {
+      state.php = object
     },
-    phpInfo:
-      (state) => {
-        return state.phpInfo
-      },
-  }
-  ,
+    setPhpInfo(state, info) {
+      state.phpInfo = info
+    },
+    setList(state, data) {
+      state.list = {
+        ...state.list,
+        ...data,
+      }
+    },
+  },
 })
