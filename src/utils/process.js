@@ -10,7 +10,7 @@ export const Process = (fn, defaultOptions = {}) => {
 
   return (async () => {
     return await fn()
-  })().then(json => json).catch(e => {
+  })().catch(e => {
     options.error && options.error(e)
     throw e
   })
